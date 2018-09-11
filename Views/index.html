@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Give Pulse</title>
+		  <meta charset="utf-8">
+		  <meta name="viewport" content="width=device-width, initial-scale=1">
+		  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<h1> Welcome to GivePulse</h1>
+			<form name="impacts-form" action="/impacts/show" method="post">
+			  <div class="form-group">
+			    <label for="address">Enter Zip or Address</label>
+			    <input name="address" type="address" class="form-control" id="address" placeholder="zip or address">
+			  </div>
+			  <button type="submit" class="btn btn-primary">Show Chart</button>
+			</form>
+		</div>
+	</body>
+</html>
