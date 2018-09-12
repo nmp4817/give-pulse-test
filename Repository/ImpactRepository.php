@@ -29,11 +29,11 @@ class ImpactRepository {
         $finalResult = [];
         while ($row = $result->fetch_assoc()) {
         	$usersByDuration = [];
-        	$usersByDuration["Duration"] = $row["duration_hours"];
+        	$usersByDuration["Duration"] = intval($row["duration_hours"]*60)/60;
         	$usersByDuration["NumberOfUsers"] = $row["COUNT(user_id)"];
         	$finalResult[] = $usersByDuration;
 		}
 
-		return json_encode(array_slice($finalResult, 100));
+		return json_encode($finalResult);
     }
 }

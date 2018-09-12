@@ -29,8 +29,6 @@
 
   <body>
 
-  <?php $dataset = $this->dataset ?>
-
   <script src="http://d3js.org/d3.v3.min.js"></script>
 
   <script>
@@ -64,11 +62,8 @@
     .append("g")
       .attr("transform", 
             "translate(" + margin.left + "," + margin.top + ")");
-
-  var dataset = <?php echo $dataset; ?>;
-
   // load the data
-  d3.json(dataset, function(error, data) {
+  d3.json('/give-pulse-test/Resources/data.json', function(error, data) {
 
       data.forEach(function(d) {
           d.Duration = d.Duration;

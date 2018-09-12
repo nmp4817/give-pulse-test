@@ -1,5 +1,11 @@
 <?php
 
-require_once 'inc/Bootstrap.php';
+require_once('Controllers/ImpactsController.php');
 
-new Bootstrap();
+$impactsController = new ImpactsController;
+
+if (isset($_POST['address'])) {
+	$impactsController->show();
+} else {
+	$impactsController->index();
+}

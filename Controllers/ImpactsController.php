@@ -27,7 +27,10 @@ class ImpactsController extends Controller
         $repository = new ImpactRepository;
         $dataset = $repository->getUsersByDuration($longitude, $latitude);
 
-		$this->view->dataset = json_encode($dataset);
+        $fp = fopen(getcwd()."\Resources\data.json", "w");
+		fwrite($fp, $dataset);
+		fclose($fp);
+
 		$this->view->render('Views/impacts/show.html');
 	}
 }
