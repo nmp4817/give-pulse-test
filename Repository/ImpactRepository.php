@@ -16,7 +16,7 @@ class ImpactRepository {
 		
 		$mysqli = $this->dbConnection;
 
-		$select_query = "SELECT impacts.duration_hours, COUNT(user_id) FROM impacts WHERE impacts.user_id IN (SELECT user_id FROM users WHERE FLOOR(users.latitude) = FLOOR(?) AND FLOOR(users.longitude) = FLOOR(?)) GROUP BY impacts.duration_hours";
+		$select_query = "SELECT impacts.duration_hours, COUNT(user_id) FROM impacts WHERE impacts.user_id IN (SELECT user_id FROM users WHERE FLOOR(users.latitude) = FLOOR(?) AND FLOOR(users.longitude) = FLOOR(?)) GROUP BY impacts.duration_hours LIMIT 50";
 		
 		if ( $select_stmt = $mysqli->prepare($select_query)) {
 
@@ -29,7 +29,7 @@ class ImpactRepository {
         $finalResult = [];
         while ($row = $result->fetch_assoc()) {
         	$usersByDuration = [];
-        	$usersByDuration["Duration"] = intval($row["duration_hours"]*60)/60;
+        	$usersByDuration["Duration"] = intval($row["duration_hours"]*60);
         	$usersByDuration["NumberOfUsers"] = $row["COUNT(user_id)"];
         	$finalResult[] = $usersByDuration;
 		}
